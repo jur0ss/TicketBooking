@@ -22,4 +22,10 @@ internal class Program
         public int Price { get; set; }
         public int SeatNumber { get; set; }
     }
+
+    public class BookingSystem
+    {
+        private List<Concert> concerts = new List<Concert>();
+        private List<Ticket> tickets = new List<Ticket>();
+    }
 }
