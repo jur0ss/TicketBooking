@@ -27,5 +27,11 @@ internal class Program
     {
         private List<Concert> concerts = new List<Concert>();
         private List<Ticket> tickets = new List<Ticket>();
+
+        public void AddConcert(Concert concert)
+        {
+            concerts.Add(concert);
+            Console.WriteLine($"Dodano nowy koncert: {concert.Name}, odbędzie się on {concert.Date}");
+        }
     }
 }
