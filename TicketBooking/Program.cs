@@ -15,4 +15,11 @@ internal class Program
         
         public int AvailableSeats { get; set; }
     }
+
+    public class Ticket
+    {
+        public string Concert { get; set; }
+        public int Price { get; set; }
+        public int SeatNumber { get; set; }
+    }
 }
