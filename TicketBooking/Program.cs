@@ -5,7 +5,16 @@ using static System.Console;
 
 internal class Program
 {
-    public class Concert
+
+    public interface Concert
+    {
+        string Name { get; }
+        DateTime Date { get; }
+        string Location { get; }
+        int AvailableSeats { get; }
+        decimal Price { get; }
+    }
+    public class RegularConcert
     {
         public string Name { get; set; }
         
@@ -14,12 +23,14 @@ internal class Program
         public string Location { get; set; }
         
         public int AvailableSeats { get; set; }
+        
+        public decimal Price { get; set; }
     }
 
     public class Ticket
     {
         public string Concert { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public int SeatNumber { get; set; }
     }
 
