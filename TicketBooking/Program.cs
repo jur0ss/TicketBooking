@@ -101,7 +101,7 @@ internal class Program
         {
             Name = name;
             Date = date;
-            Location = null;
+            Location = "Online";
             AvailableSeats = availableSeats;
             Price = price;
         }
@@ -143,6 +143,20 @@ internal class Program
         {
             concerts.Add(concert);
             Console.WriteLine($"Dodano nowy koncert: {concert.Name}, odbędzie się on {concert.Date}");
+        }
+
+        public void ReserveTicket(Concert concert, int amount)
+        {
+            if (concert.AvailableSeats >= amount)
+            {
+                concert.ReserveSeat();
+                for (int i = 0; i < amount; i++))
+                {
+                    Ticket ticket = new Ticket(concert, concert.Price, i + 1);
+                    tickets.Add(ticket);
+                    Console.WriteLine($"Zarezerwowano bilet na koncert {concert.Name}, numer miejsca: {i+1}");
+                }
+            }
         }
     }
 }
