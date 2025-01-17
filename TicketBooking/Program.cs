@@ -75,7 +75,42 @@ internal class Program
         {
             if (AvailableSeats > 0)
             {
-                Console.WriteLine($"Zarezerwowano miejsce na koncert {Name}");
+                Console.WriteLine($"Zarezerwowano miejsce na koncert VIP {Name}");
+                AvailableSeats--;
+            }
+            else
+            {
+                Console.WriteLine("Bilety zostały wyprzedane");
+            }
+        }
+    }
+    
+    public class OnlineConcert : Concert
+    {
+        public string Name { get; set; }
+        
+        public DateTime Date { get; set; }
+        
+        public string Location { get; set; }
+        
+        public int AvailableSeats { get; set; }
+        
+        public decimal Price { get; set; }
+
+        public OnlineConcert(string name, DateTime date, int availableSeats, decimal price)
+        {
+            Name = name;
+            Date = date;
+            Location = null;
+            AvailableSeats = availableSeats;
+            Price = price;
+        }
+
+        public void ReserveSeat()
+        {
+            if (AvailableSeats > 0)
+            {
+                Console.WriteLine($"Zarezerwowano miejsce na koncert online {Name}");
                 AvailableSeats--;
             }
             else
