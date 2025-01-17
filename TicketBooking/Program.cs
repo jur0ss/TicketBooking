@@ -14,7 +14,7 @@ internal class Program
         int AvailableSeats { get; }
         decimal Price { get; }
     }
-    public class RegularConcert
+    public class RegularConcert : Concert
     {
         public string Name { get; set; }
         
@@ -26,7 +26,42 @@ internal class Program
         
         public decimal Price { get; set; }
 
-        public Concert(string name, DateTime date, string location, int availableSeats, decimal price)
+        public RegularConcert(string name, DateTime date, string location, int availableSeats, decimal price)
+        {
+            Name = name;
+            Date = date;
+            Location = location;
+            AvailableSeats = availableSeats;
+            Price = price;
+        }
+
+        public void ReserveSeat()
+        {
+            if (AvailableSeats > 0)
+            {
+                Console.WriteLine($"Zarezerwowano miejsce na koncert {Name}");
+                AvailableSeats--;
+            }
+            else
+            {
+                Console.WriteLine("Bilety zostały wyprzedane");
+            }
+        }
+    }
+    
+    public class VIPConcert : Concert
+    {
+        public string Name { get; set; }
+        
+        public DateTime Date { get; set; }
+        
+        public string Location { get; set; }
+        
+        public int AvailableSeats { get; set; }
+        
+        public decimal Price { get; set; }
+
+        public VIPConcert(string name, DateTime date, string location, int availableSeats, decimal price)
         {
             Name = name;
             Date = date;
@@ -51,7 +86,7 @@ internal class Program
 
     public class Ticket
     {
-        public string Concert { get; set; }
+        public Concert Concert { get; set; }
         public decimal Price { get; set; }
         public int SeatNumber { get; set; }
     }
