@@ -18,13 +18,35 @@ internal class Program
     {
         public string Name { get; set; }
         
-        public JSType.Date Date { get; set; }
+        public DateTime Date { get; set; }
         
         public string Location { get; set; }
         
         public int AvailableSeats { get; set; }
         
         public decimal Price { get; set; }
+
+        public Concert(string name, DateTime date, string location, int availableSeats, decimal price)
+        {
+            Name = name;
+            Date = date;
+            Location = location;
+            AvailableSeats = availableSeats;
+            Price = price;
+        }
+
+        public void ReserveSeat()
+        {
+            if (AvailableSeats > 0)
+            {
+                Console.WriteLine($"Zarezerwowano miejsce na koncert {Name}");
+                AvailableSeats--;
+            }
+            else
+            {
+                Console.WriteLine("Bilety zostały wyprzedane");
+            }
+        }
     }
 
     public class Ticket
