@@ -150,13 +150,32 @@ internal class Program
             if (concert.AvailableSeats >= amount)
             {
                 concert.ReserveSeat();
-                for (int i = 0; i < amount; i++))
+                for (int i = 0; i < amount; i++)
                 {
                     Ticket ticket = new Ticket(concert, concert.Price, i + 1);
                     tickets.Add(ticket);
                     Console.WriteLine($"Zarezerwowano bilet na koncert {concert.Name}, numer miejsca: {i+1}");
                 }
             }
+            else
+            {
+                Console.WriteLine($"Brak wystarczającej liczby dostępnych miejsc. Dostępne miejsca: {concert.AvailableSeats}");
+            }
         }
     }
+
+    static void Main(string[] args)
+    {
+        Concert zenek = new RegularConcert("Zenek", DateTime.Now.AddDays(7), "Warszawa", 100, 150.00m);
+        Concert vipGolec = new VIPConcert("Bracia Golec", DateTime.Now.AddDays(10), "Kraków", 20, 500.00m);
+        Concert onlineMaryla = new OnlineConcert("Maryla Rodowicz", DateTime.Now.AddDays(14), 200, 80.00m);
+        
+        BookingSystem bookingSystem = new BookingSystem();
+        bookingSystem.AddConcert(zenek);
+        bookingSystem.AddConcert(vipGolec);
+        bookingSystem.AddConcert(onlineMaryla);
+        
+        bookingSystem.ReserveTicket(zenek, 5);
+    }
 }
+
