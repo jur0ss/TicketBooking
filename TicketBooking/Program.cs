@@ -13,6 +13,7 @@ internal class Program
         string Location { get; }
         int AvailableSeats { get; }
         decimal Price { get; }
+        void ReserveSeat();
     }
     public class RegularConcert : Concert
     {
@@ -89,6 +90,13 @@ internal class Program
         public Concert Concert { get; set; }
         public decimal Price { get; set; }
         public int SeatNumber { get; set; }
+
+        public Ticket(Concert concert, decimal price, int seatNumber)
+        {
+            Concert = concert;
+            Price = price;
+            SeatNumber = seatNumber;
+        }
     }
 
     public class BookingSystem
